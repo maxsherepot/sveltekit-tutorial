@@ -1,4 +1,7 @@
 <script>
+    import Table from "$lib/components/Table.svelte";
+
+    export let data;
 </script>
 
 <div class="grid md:grid-cols-2 gap-5">
@@ -40,5 +43,8 @@
             </a>
         </div>
     </div>
-    <div class="bg-neutral-200">Scheduled Publications</div>
+
+    <div class="bg-neutral-200">
+        <Table comments={data.comments} />
+    </div>
 </div>
