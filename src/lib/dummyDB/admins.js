@@ -1,0 +1,42 @@
+export const admins = [
+    {
+        "id": 1,
+        "name": "Leanne Graham",
+        "cipn": "XX-XXXX",
+        "channel_publish_rights": "some icons",
+        "edit_rights": "true",
+        "edit_channels": "true",
+    },
+    {
+        "id": 2,
+        "name": "Ervin Howell",
+        "cipn": "XX-XXXX",
+        "channel_publish_rights": "some icons",
+        "edit_rights": "true",
+        "edit_channels": "false",
+    },
+    {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "cipn": "XX-XXXX",
+        "channel_publish_rights": "some icons",
+        "edit_rights": "true",
+        "edit_channels": "true",
+    },
+    {
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "cipn": "XX-XXXX",
+        "channel_publish_rights": "some icons",
+        "edit_rights": "true",
+        "edit_channels": "false",
+    },
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "cipn": "XX-XXXX",
+        "channel_publish_rights": "some icons",
+        "edit_rights": "false",
+        "edit_channels": "false",
+    },
+];

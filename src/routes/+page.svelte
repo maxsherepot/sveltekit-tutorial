@@ -45,6 +45,6 @@
     </div>
 
     <div class="bg-neutral-200">
-        <Table comments={data.comments} />
+        <Table data={data.comments} />
     </div>
 </div>

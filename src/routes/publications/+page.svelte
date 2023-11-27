@@ -4,4 +4,4 @@
     export let data;
 </script>
 
-<Table comments={data.comments} />
+<Table data={data.comments} />

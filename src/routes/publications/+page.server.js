@@ -1,4 +1,4 @@
-export async function load() {
+export async function load({ fetch }) {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/comments');
         const responseData = await response.json();

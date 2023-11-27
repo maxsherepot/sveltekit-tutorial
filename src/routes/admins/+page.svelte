@@ -1,1 +1,7 @@
-<h1>Admins Page</h1>
+<script>
+    import Table from "$lib/components/Table.svelte";
+
+    export let data;
+</script>
+
+<Table data={data.admins} isRowClickable />
