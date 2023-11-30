@@ -1,6 +1,6 @@
 <script>
-    import Table from "$lib/components/Table.svelte";
     import SvelteTable from "svelte-table";
+    import Switcher from "$lib/components/Switcher.svelte";
 
     export let data;
 
@@ -32,18 +32,38 @@
             key: "edit_rights",
             title: "Edit rights",
             value: (v) => v.edit_rights,
-            sortable: true,
+            renderComponent: {
+                component: Switcher,
+                props: {
+                    key: "edit_rights",
+                },
+            },
             headerClass: "text-left",
         },
         {
             key: "edit_channels",
             title: "Edit Channels & Templates",
             value: (v) => v.edit_channels,
-            sortable: true,
+            renderComponent: {
+                component: Switcher,
+                props: {
+                    key: "edit_channels",
+                },
+            },
             headerClass: "text-left",
         },
     ];
 </script>
 
-<Table data={data.admins} isRowClickable />
-<SvelteTable {columns} {rows} />
+{#if rows.length}
+    <SvelteTable
+        {columns}
+        {rows}
+        classNameTable={"text-gray-600"}
+        classNameThead={"text-gray-700 border-b-2"}
+        classNameRow={"odd:bg-white even:bg-gray-100 border-b-2"}
+        classNameCell={"p-4"}
+    />
+{:else}
+    <h1>No admins data</h1>
+{/if}
