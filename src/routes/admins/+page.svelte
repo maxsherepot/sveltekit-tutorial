@@ -1,6 +1,8 @@
 <script>
     import SvelteTable from "svelte-table";
     import Switcher from "$lib/components/Switcher.svelte";
+    import RightIcon from "../../lib/components/icons/RightIcon.svelte";
+    import { goto } from "$app/navigation";
 
     export let data;
 
@@ -52,7 +54,22 @@
             },
             headerClass: "text-left",
         },
+        {
+            key: "edit_admin",
+            title: "",
+            renderComponent: {
+                component: RightIcon,
+            },
+            headerClass: "text-left",
+        },
     ];
+
+    const onCellSelect = ({ detail }) => {
+        const adminId = detail.row.id;
+        if (detail.key === "edit_admin" && adminId) {
+            goto(`admins/${adminId}`);
+        }
+    };
 </script>
 
 {#if rows.length}
@@ -63,6 +80,7 @@
         classNameThead={"text-gray-700 border-b-2"}
         classNameRow={"odd:bg-white even:bg-gray-100 border-b-2"}
         classNameCell={"p-4"}
+        on:clickCell={onCellSelect}
     />
 {:else}
     <h1>No admins data</h1>

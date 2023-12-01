@@ -18,6 +18,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"iconify-icon": "^1.0.8",
 		"svelte-table": "^0.6.1"
 	}
 }
