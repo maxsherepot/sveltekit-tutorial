@@ -1,3 +1,5 @@
+import { error } from '@sveltejs/kit';
+
 export async function load({ fetch }) {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/comments');
@@ -12,7 +14,7 @@ export async function load({ fetch }) {
                 body: comment.body.substring(0, 30),
             }))
         }
-    } catch (error) {
-        console.error(error);
+    } catch (e) {
+        throw error(420, 'Error loading publications');
     }
 }
