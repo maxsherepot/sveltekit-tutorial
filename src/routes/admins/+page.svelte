@@ -1,25 +1,31 @@
 <script>
     import SvelteTable from "svelte-table";
     import Switcher from "$lib/components/Switcher.svelte";
+    import { getEnabledKeysfromObj } from "$lib/helpers/functions";
     import RightIcon from "../../lib/components/icons/RightIcon.svelte";
     import { goto } from "$app/navigation";
 
     export let data;
-
+    const unknown = "-";
     const rows = data.admins;
 
     const columns = [
         {
             key: "name",
             title: "Admins",
-            value: (v) => v.name,
+            value: (v) =>
+                `${
+                    (v.profile.first_name || "") +
+                    " " +
+                    (v.profile.last_name || "")
+                }` || unknown,
             sortable: true,
             headerClass: "text-left",
         },
         {
             key: "cipn",
             title: "<<Certified Integration Partner Name>> ID",
-            value: (v) => v.cipn,
+            value: (v) => v.profile.cipn || unknown,
             sortable: true,
             headerClass: "text-left",
         },
@@ -27,16 +33,17 @@
             key: "channel_publish_rights",
             title: "Channel publish rights",
             value: (v) => v.channel_publish_rights,
-            sortable: true,
+            renderValue: (v) => getEnabledKeysfromObj(v.channel_publish_rights),
             headerClass: "text-left",
         },
         {
             key: "edit_rights",
             title: "Edit rights",
-            value: (v) => v.edit_rights,
+            value: (v) => v.admin_rights,
             renderComponent: {
                 component: Switcher,
                 props: {
+                    column: "admin_rights",
                     key: "edit_rights",
                 },
             },
@@ -45,10 +52,11 @@
         {
             key: "edit_channels",
             title: "Edit Channels & Templates",
-            value: (v) => v.edit_channels,
+            value: (v) => v.admin_rights,
             renderComponent: {
                 component: Switcher,
                 props: {
+                    column: "admin_rights",
                     key: "edit_channels",
                 },
             },
