@@ -41,5 +41,5 @@
         </table>
     </div>
 {:else}
-    <h1>No data</h1>
+    <span>No data</span>
 {/if}

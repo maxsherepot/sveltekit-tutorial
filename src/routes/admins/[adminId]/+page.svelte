@@ -1,7 +1,9 @@
 <script>
     import InfoIcon from "$lib/components/icons/InfoIcon.svelte";
+    import GroupIcon from "../../../lib/components/icons/GroupIcon.svelte";
 
     export let data = [];
+    const { admin } = data;
     console.log(data);
 </script>
 
@@ -131,3 +133,16 @@
         </div>
     </div>
 </form>
+
+<div>
+    <h2 class="font-bold mb-2">Groups</h2>
+
+    {#each admin.groups as group}
+        <div class="border p-3 flex">
+            <GroupIcon />
+            {group}
+        </div>
+    {:else}
+        <span>No groups</span>
+    {/each}
+</div>

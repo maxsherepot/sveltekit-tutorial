@@ -91,5 +91,5 @@
         on:clickCell={onCellSelect}
     />
 {:else}
-    <h1>No admins data</h1>
+    <span>No admins data</span>
 {/if}
