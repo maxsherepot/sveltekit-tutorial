@@ -135,14 +135,35 @@
 </form>
 
 <div>
-    <h2 class="font-bold mb-2">Groups</h2>
-
+    <h2 class="font-bold mb-2 my-5">Groups</h2>
     {#each admin.groups as group}
-        <div class="border p-3 flex">
+        <div class="border p-4 flex">
             <GroupIcon />
             {group}
         </div>
     {:else}
         <span>No groups</span>
+    {/each}
+</div>
+
+<div>
+    <h2 class="font-bold mb-2 my-5">Channel preferences (as a user)</h2>
+    {#each Object.entries(admin.channel_preferences) as item}
+        <div class="flex items-center border p-4">
+            <GroupIcon />
+            <div class="flex w-full justify-between items-center">
+                <label for={item[0]}>{item[0]}</label>
+                <input
+                    id={item[0]}
+                    type="checkbox"
+                    checked={item[1]}
+                    value=""
+                    name="bordered-checkbox"
+                    class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 mr-5"
+                />
+            </div>
+        </div>
+    {:else}
+        <span>No channel preferences</span>
     {/each}
 </div>
